@@ -14,14 +14,15 @@ var Cat = function () {
     this.catLevel = ko.computed(function () {
         return this.clickCount() < 10 ? "Newborn" : (this.clickCount() <= 39 ? "Infant" : (this.clickCount() <= 79 ? "Teen" : "Adult"));
     }, this);
-    this.incrementCounter = function () {
-        this.clickCount(this.clickCount() + 1);
-    };
 }
 
 var ViewModel = function () {
-    this.currentCat = ko.observable(new Cat({ clickCount: this.clickCount, name: this.name, imgSrc: this.imgSrc, imgAttribution: this.imgAttribution, nickName: this.nickName, incrementCounter: this.incrementCounter}));
-    //this.currentCat({ clickCount: clickCount, name: name, imgSrc: imgSrc, imgAttribution: imgAttribution, nickName: nickName });
+    this.currentCat = ko.observable(new Cat());
+
+    this.incrementCounter = function () {
+        this.clickCount(this.clickCount() + 1);
+    };
+    //{ clickCount: this.clickCount, name: this.name, imgSrc: this.imgSrc, imgAttribution: this.imgAttribution, nickName: this.nickName, incrementCounter: this.incrementCounter}
 
 }
 
